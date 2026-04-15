@@ -38,7 +38,7 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
+      "output": "single",
       "favicon": "./public/pwa-icons/icon-96x96.png",
       "name": "Graham Conference",
       "shortName": "Graham Conf",
