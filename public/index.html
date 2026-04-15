@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"
+    />
+    <title>Graham Conference</title>
+    <meta
+      name="description"
+      content="Official app for the Graham Packaging HR & Finance Conference"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0A6EB0" />
+    <meta name="background-color" content="#0A6EB0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Graham Conf" />
+    <link rel="apple-touch-icon" href="/pwa-icons/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-startup-image"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      href="/pwa-icons/icon-512x512.png"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+      href="/pwa-icons/icon-512x512.png"
+    />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-icons/icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pwa-icons/icon-96x96.png" />
+    <meta name="msapplication-TileColor" content="#0A6EB0" />
+    <meta name="msapplication-TileImage" content="/pwa-icons/icon-144x144.png" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+      html, body, #root {
+        width: 100%; height: 100%; margin: 0; padding: 0;
+        overflow: hidden; background-color: #0A6EB0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #splash {
+        display: flex; align-items: center; justify-content: center;
+        width: 100%; height: 100%;
+      }
+      #splash img { width: 220px; animation: pulse 1.5s ease-in-out infinite; }
+      @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="splash">
+        <img src="/pwa-icons/icon-192x192.png" alt="Loading Graham Conference..." />
+      </div>
+    </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(function (reg) {
+              console.log("Service Worker registered - scope:", reg.scope);
+            })
+            .catch(function (err) {
+              console.warn("Service Worker registration failed:", err);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
