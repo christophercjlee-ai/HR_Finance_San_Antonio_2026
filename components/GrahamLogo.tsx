@@ -5,7 +5,7 @@ interface GrahamLogoProps {
   width?: number;
 }
 
-const LOGO_SOURCE = require("../assets/Graham-Packaging-Logo-RGB (2).png");
+const LOGO_SOURCE = require("../assets/graham-logo.png");
 
 const FULL_ASPECT = 3.2;
 const SWIRL_FRACTION = 0.30;
