@@ -1,1 +1,76 @@
-ewogICJleHBvIjogewogICAgIm5hbWUiOiAiR3JhaGFtIENvbmZlcmVuY2UiLAogICAgInNsdWciOiAiZ3JhaGFtLWNvbmZlcmVuY2UiLAogICAgInZlcnNpb24iOiAiMS4wLjAiLAogICAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwKICAgICJpY29uIjogIi4vYXNzZXRzL2ljb24ucG5nIiwKICAgICJzY2hlbWUiOiAiZ3JhaGFtLWNvbmZlcmVuY2UiLAogICAgInVzZXJJbnRlcmZhY2VTdHlsZSI6ICJsaWdodCIsCiAgICAibmV3QXJjaEVuYWJsZWQiOiB0cnVlLAogICAgInNwbGFzaCI6IHsKICAgICAgImltYWdlIjogIi4vYXNzZXRzL3NwbGFzaC1pY29uLnBuZyIsCiAgICAgICJyZXNpemVNb2RlIjogImNvbnRhaW4iLAogICAgICAiYmFja2dyb3VuZENvbG9yIjogIiMwQTZFQjAiCiAgICB9LAogICAgImlvcyI6IHsKICAgICAgInN1cHBvcnRzVGFibGV0IjogdHJ1ZSwKICAgICAgImJ1bmRsZUlkZW50aWZpZXIiOiAiY29tLmdyYWhhbXBhY2thZ2luZy5jb25mZXJlbmNlIiwKICAgICAgImluZm9QbGlzdCI6IHsKICAgICAgICAiTlNDYWxlbmRhcnNVc2FnZURlc2NyaXB0aW9uIjogIldlIG5lZWQgYWNjZXNzIHRvIHlvdXIgY2FsZW5kYXIgdG8gYWRkIGNvbmZlcmVuY2UgZXZlbnRzLiIsCiAgICAgICAgIk5TUGhvdG9MaWJyYXJ5VXNhZ2VEZXNjcmlwdGlvbiI6ICJXZSBuZWVkIGFjY2VzcyB0byB5b3VyIHBob3RvcyB0byB1cGxvYWQgY29uZmVyZW5jZSBwaG90b3MuIiwKICAgICAgICAiTlNDYW1lcmFVc2FnZURlc2NyaXB0aW9uIjogIldlIG5lZWQgY2FtZXJhIGFjY2VzcyB0byB0YWtlIGNvbmZlcmVuY2UgcGhvdG9zLiIKICAgICAgfQogICAgfSwKICAgICJhbmRyb2lkIjogewogICAgICAiYWRhcHRpdmVJY29uIjogewogICAgICAgICJmb3JlZ3JvdW5kSW1hZ2UiOiAiLi9hc3NldHMvYWRhcHRpdmUtaWNvbi5wbmciLAogICAgICAgICJiYWNrZ3JvdW5kQ29sb3IiOiAiIzBBNkVCMCIKICAgICAgfSwKICAgICAgInBhY2thZ2UiOiAiY29tLmdyYWhhbXBhY2thZ2luZy5jb25mZXJlbmNlIiwKICAgICAgInBlcm1pc3Npb25zIjogWwogICAgICAgICJDQU1FUkEiLAogICAgICAgICJSRUFEX0VYVEVSTkFMX1NUT1JBR0UiLAogICAgICAgICJXUklURV9FWFRFUk5BTF9TVE9SQUdFIiwKICAgICAgICAiUkVBRF9DQUxFTkRBUiIsCiAgICAgICAgIldSSVRFX0NBTEVOREFSIgogICAgICBdCiAgICB9LAogICAgIndlYiI6IHsKICAgICAgImJ1bmRsZXIiOiAibWV0cm8iLAogICAgICAib3V0cHV0IjogInN0YXRpYyIsCiAgICAgICJmYXZpY29uIjogIi4vcHVibGljL3B3YS1pY29ucy9pY29uLTk2eDk2LnBuZyIsCiAgICAgICJuYW1lIjogIkdyYWhhbSBDb25mZXJlbmNlIiwKICAgICAgInNob3J0TmFtZSI6ICJHcmFoYW0gQ29uZiIsCiAgICAgICJkZXNjcmlwdGlvbiI6ICJPZmZpY2lhbCBhcHAgZm9yIHRoZSBHcmFoYW0gUGFja2FnaW5nIEhSICYgRmluYW5jZSBDb25mZXJlbmNlIiwKICAgICAgImJhY2tncm91bmRDb2xvciI6ICIjMEE2RUIwIiwKICAgICAgInRoZW1lQ29sb3IiOiAiIzBBNkVCMCIKICAgIH0sCiAgICAicGx1Z2lucyI6IFsKICAgICAgImV4cG8tcm91dGVyIiwKICAgICAgImV4cG8tZm9udCIsCiAgICAgIFsKICAgICAgICAiZXhwby1ub3RpZmljYXRpb25zIiwKICAgICAgICB7CiAgICAgICAgICAiaWNvbiI6ICIuL2Fzc2V0cy9ub3RpZmljYXRpb24taWNvbi5wbmciLAogICAgICAgICAgImNvbG9yIjogIiMwQTZFQjAiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZXhwby1jYWxlbmRhciIsCiAgICAgICJleHBvLWltYWdlLXBpY2tlciIsCiAgICAgICJleHBvLWRvY3VtZW50LXBpY2tlciIsCiAgICAgICJleHBvLWFzc2V0IgogICAgXSwKICAgICJleHBlcmltZW50cyI6IHsKICAgICAgInR5cGVkUm91dGVzIjogdHJ1ZQogICAgfSwKICAgICJleHRyYSI6IHsKICAgICAgInJvdXRlciI6IHsKICAgICAgICAib3JpZ2luIjogZmFsc2UKICAgICAgfSwKICAgICAgImVhcyI6IHsKICAgICAgICAicHJvamVjdElkIjogIllPVVJfRUFTX1BST0pFQ1RfSUQiCiAgICAgIH0KICAgIH0KICB9Cn0K
+{
+  "expo": {
+    "name": "Graham Conference",
+    "slug": "graham-conference",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "graham-conference",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A6EB0"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.grahampackaging.conference",
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "We need access to your calendar to add conference events.",
+        "NSPhotoLibraryUsageDescription": "We need access to your photos to upload conference photos.",
+        "NSCameraUsageDescription": "We need camera access to take conference photos."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0A6EB0"
+      },
+      "package": "com.grahampackaging.conference",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_CALENDAR",
+        "WRITE_CALENDAR"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./public/pwa-icons/icon-96x96.png",
+      "name": "Graham Conference",
+      "shortName": "Graham Conf",
+      "description": "Official app for the Graham Packaging HR & Finance Conference",
+      "backgroundColor": "#0A6EB0",
+      "themeColor": "#0A6EB0"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#0A6EB0"
+        }
+      ],
+      "expo-calendar",
+      "expo-image-picker",
+      "expo-document-picker",
+      "expo-asset"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "YOUR_EAS_PROJECT_ID"
+      }
+    }
+  }
+}
