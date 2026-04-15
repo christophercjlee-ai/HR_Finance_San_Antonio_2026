@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fix React Native Web flex layout - #root must be a flex container
+   so that child views with flex:1 can expand properly */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
