@@ -1,1 +1,19 @@
-ewogICJjbGkiOiB7CiAgICAidmVyc2lvbiI6ICI+PSAxMi4wLjAiCiAgfSwKICAiYnVpbGQiOiB7CiAgICAiZGV2ZWxvcG1lbnQiOiB7CiAgICAgICJkZXZlbG9wbWVudENsaWVudCI6IHRydWUsCiAgICAgICJkaXN0cmlidXRpb24iOiAiaW50ZXJuYWwiLAogICAgICAiaW9zIjogeyAic2ltdWxhdG9yIjogdHJ1ZSB9CiAgICB9LAogICAgInByZXZpZXciOiB7CiAgICAgICJkaXN0cmlidXRpb24iOiAiaW50ZXJuYWwiCiAgICB9LAogICAgInByb2R1Y3Rpb24iOiB7fQogIH0sCiAgInN1Ym1pdCI6IHsKICAgICJwcm9kdWN0aW9uIjoge30KICB9Cn0K
+{
+  "cli": {
+    "version": ">= 12.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": { "simulator": true }
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}
