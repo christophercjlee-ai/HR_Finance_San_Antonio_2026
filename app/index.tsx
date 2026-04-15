@@ -1,1 +1,10 @@
-aW1wb3J0IHsgUmVkaXJlY3QgfSBmcm9tICJleHBvLXJvdXRlciI7CmltcG9ydCB7IEFjdGl2aXR5SW5kaWNhdG9yLCBWaWV3IH0gZnJvbSAicmVhY3QtbmF0aXZlIjsKaW1wb3J0IHsgdXNlQXV0aCB9IGZyb20gIkAvbGliL2F1dGgtY29udGV4dCI7CmltcG9ydCB7IENPTE9SUyB9IGZyb20gIkAvbGliL2NvbnN0YW50cyI7CmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIEluZGV4KCkgewogIGNvbnN0IHsgc2Vzc2lvbiwgbG9hZGluZyB9ID0gdXNlQXV0aCgpOwogIGlmIChsb2FkaW5nKSByZXR1cm4gKDxWaWV3IGNsYXNzTmFtZT0iZmxleC0xIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBiZy13aGl0ZSI+PEFjdGl2aXR5SW5kaWNhdG9yIHNpemU9ImxhcmdlIiBjb2xvcj17Q09MT1JTLnByaW1hcnl9IC8+PC9WaWV3Pik7CiAgaWYgKHNlc3Npb24pIHJldHVybiA8UmVkaXJlY3QgaHJlZj0iLyh0YWJzKS9ob21lIiAvPjsKICByZXR1cm4gPFJlZGlyZWN0IGhyZWY9Ii8oYXV0aCkvbG9naW4iIC8+Owp9Cg==
+import { Redirect } from "expo-router";
+import { ActivityIndicator, View } from "react-native";
+import { useAuth } from "@/lib/auth-context";
+import { COLORS } from "@/lib/constants";
+export default function Index() {
+  const { session, loading } = useAuth();
+  if (loading) return (<View className="flex-1 items-center justify-center bg-white"><ActivityIndicator size="large" color={COLORS.primary} /></View>);
+  if (session) return <Redirect href="/(tabs)/home" />;
+  return <Redirect href="/(auth)/login" />;
+}
