@@ -1,1 +1,18 @@
-IyBEZXBlbmRlbmNpZXMKbm9kZV9tb2R1bGVzLwoKIyBFeHBvCi5leHBvLwpkaXN0LwpleHBvLWVudi5kLnRzCgojIG1hY09TCi5EU19TdG9yZQoKIyBFZGl0b3IKKi5zd3AKKi5zd28KCiMgRW52aXJvbm1lbnQKLmVudgouZW52LmxvY2FsCg==
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+expo-env.d.ts
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
