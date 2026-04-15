@@ -1,1 +1,12 @@
-Ly8gUm9vdCBMYXlvdXQKaW1wb3J0ICIuLi9nbG9iYWwuY3NzIjsKaW1wb3J0IHsgdXNlRWZmZWN0IH0gZnJvbSAicmVhY3QiOwppbXBvcnQgeyBTdGFjayB9IGZyb20gImV4cG8tcm91dGVyIjsKaW1wb3J0IHsgU3RhdHVzQmFyIH0gZnJvbSAiZXhwby1zdGF0dXMtYmFyIjsKaW1wb3J0ICogYXMgU3BsYXNoU2NyZWVuIGZyb20gImV4cG8tc3BsYXNoLXNjcmVlbiI7CmltcG9ydCB7IEF1dGhQcm92aWRlciB9IGZyb20gIkAvbGliL2F1dGgtY29udGV4dCI7ClNwbGFzaFNjcmVlbi5wcmV2ZW50QXV0b0hpZGVBc3luYygpOwpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBSb290TGF5b3V0KCkgewogIHVzZUVmZmVjdCgoKSA9PiB7IGNvbnN0IHQgPSBzZXRUaW1lb3V0KCgpID0+IFNwbGFzaFNjcmVlbi5oaWRlQXN5bmMoKSwgNTAwKTsgcmV0dXJuICgpID0+IGNsZWFyVGltZW91dCh0KTsgfSwgW10pOwogIHJldHVybiAoPEF1dGhQcm92aWRlcj48U3RhdHVzQmFyIHN0eWxlPSJkYXJrIiAvPjxTdGFjayBzY3JlZW5PcHRpb25zPXt7IGhlYWRlclNob3duOiBmYWxzZSB9fT48U3RhY2suU2NyZWVuIG5hbWU9IihhdXRoKSIgLz48U3RhY2suU2NyZWVuIG5hbWU9Iih0YWJzKSIgLz48L1N0YWNrPjwvQXV0aFByb3ZpZGVyPik7Cn0K
+// Root Layout
+import "../global.css";
+import { useEffect } from "react";
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import * as SplashScreen from "expo-splash-screen";
+import { AuthProvider } from "@/lib/auth-context";
+SplashScreen.preventAutoHideAsync();
+export default function RootLayout() {
+  useEffect(() => { const t = setTimeout(() => SplashScreen.hideAsync(), 500); return () => clearTimeout(t); }, []);
+  return (<AuthProvider><StatusBar style="dark" /><Stack screenOptions={{ headerShown: false }}><Stack.Screen name="(auth)" /><Stack.Screen name="(tabs)" /></Stack></AuthProvider>);
+}
