@@ -1,1 +1,6 @@
-Y29uc3QgeyBnZXREZWZhdWx0Q29uZmlnIH0gPSByZXF1aXJlKCJleHBvL21ldHJvLWNvbmZpZyIpOwpjb25zdCB7IHdpdGhOYXRpdmVXaW5kIH0gPSByZXF1aXJlKCJuYXRpdmV3aW5kL21ldHJvIik7Cgpjb25zdCBjb25maWcgPSBnZXREZWZhdWx0Q29uZmlnKF9fZGlybmFtZSk7Cgptb2R1bGUuZXhwb3J0cyA9IHdpdGhOYXRpdmVXaW5kKGNvbmZpZywgeyBpbnB1dDogIi4vZ2xvYmFsLmNzcyIgfSk7Cg==
+const { getDefaultConfig } = require("expo/metro-config");
+const { withNativeWind } = require("nativewind/metro");
+
+const config = getDefaultConfig(__dirname);
+
+module.exports = withNativeWind(config, { input: "./global.css" });
