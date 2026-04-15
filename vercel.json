@@ -1,1 +1,6 @@
-ewogICJidWlsZENvbW1hbmQiOiAibnB4IGV4cG8gZXhwb3J0IC0tcGxhdGZvcm0gd2ViIiwKICAib3V0cHV0RGlyZWN0b3J5IjogImRpc3QiLAogICJmcmFtZXdvcmsiOiBudWxsLAogICJpbnN0YWxsQ29tbWFuZCI6ICJucG0gaW5zdGFsbCAtLWxlZ2FjeS1wZWVyLWRlcHMiCn0K
+{
+  "buildCommand": "npx expo export --platform web",
+  "outputDirectory": "dist",
+  "framework": null,
+  "installCommand": "npm install --legacy-peer-deps"
+}
