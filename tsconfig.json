@@ -1,1 +1,16 @@
-ewogICJleHRlbmRzIjogImV4cG8vdHNjb25maWcuYmFzZSIsCiAgImNvbXBpbGVyT3B0aW9ucyI6IHsKICAgICJzdHJpY3QiOiB0cnVlLAogICAgInBhdGhzIjogewogICAgICAiQC8qIjogWyIuLyoiXQogICAgfQogIH0sCiAgImluY2x1ZGUiOiBbCiAgICAiKiovKi50cyIsCiAgICAiKiovKi50c3giLAogICAgIi5leHBvL3R5cGVzLyoqLyoudHMiLAogICAgImV4cG8tZW52LmQudHMiLAogICAgIm5hdGl2ZXdpbmQtZW52LmQudHMiCiAgXQp9Cg==
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+  ]
+}
