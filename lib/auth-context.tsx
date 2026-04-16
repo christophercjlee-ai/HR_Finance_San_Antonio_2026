@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "./supabase";
 import type { User } from "./types";
 import type { Session } from "@supabase/supabase-js";
+import { Platform } from "react-native";
 
 interface AuthContextType {
   session: Session | null;
@@ -75,7 +76,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       email,
       options: {
         shouldCreateUser: true,
-        emailRedirectTo: "graham-conference://auth/callback",
+emailRedirectTo: Platform.OS === "web" ? "https://hr-finance-san-antonio-2026.vercel.app" : "graham-conference://auth/callback",
       },
     });
     return { error: error as Error | null };
