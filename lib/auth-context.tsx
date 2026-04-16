@@ -47,14 +47,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
-      setSession(s);
-      if (s?.user?.id) {
-        fetchUser(s.user.id);
-      }
-      setLoading(false);
-    });
+useEffect(() => {
+      const initAuth = async () => {
+              if (Platform.OS === "web" && typeof window !== "undefined" && window.location.search.includes("code=")) {
+                        try {
+                                    await supabase.auth.exchangeCodeForSession(window.location.href);
+                                    window.history.replaceState({}, document.title, window.location.pathname);
+                        } catch (err) {
+                                    console.error("Magic link exchange failed:", err);
+                        }
+              }
+              const { data: { session: s } } = await supabase.auth.getSession();
+              setSession(s);
+              if (s?.user?.id) {
+                        await fetchUser(s.user.id);
+              }
+              setLoading(false);
+      };
+      initAuth();
 
     const {
       data: { subscription },
