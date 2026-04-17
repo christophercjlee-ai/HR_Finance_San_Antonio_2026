@@ -75,8 +75,7 @@ useEffect(() => {
       } else {
         setUser(null);
       }
-      setLoading(false);
-    });
+// setLoading(false) removed - initAuth handles initial loading state to avoid race with code exchange    });
 
     return () => subscription.unsubscribe();
   }, []);
@@ -95,7 +94,6 @@ emailRedirectTo: Platform.OS === "web" ? "https://hr-finance-san-antonio-2026.ve
   const signOut = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    setSession(null);
   };
 
   return (
