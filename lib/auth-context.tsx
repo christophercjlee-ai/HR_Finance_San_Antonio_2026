@@ -10,6 +10,7 @@ interface AuthContextType {
   isAdmin: boolean;
   loading: boolean;
   signInWithEmail: (email: string) => Promise<{ error: Error | null }>;
+  verifyCode: (email: string, token: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
   refreshUser: () => Promise<void>;
 }
@@ -20,6 +21,7 @@ const AuthContext = createContext<AuthContextType>({
   isAdmin: false,
   loading: true,
   signInWithEmail: async () => ({ error: null }),
+  verifyCode: async () => ({ error: null }),
   signOut: async () => {},
   refreshUser: async () => {},
 });
@@ -88,6 +90,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { error: error as Error | null };
   };
 
+  const verifyCode = async (email: string, token: string) => {
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token,
+      type: "email",
+    });
+    return { error: error as Error | null };
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
     setUser(null);
@@ -102,6 +113,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isAdmin: user?.role === "admin",
         loading,
         signInWithEmail,
+        verifyCode,
         signOut,
         refreshUser,
       }}
