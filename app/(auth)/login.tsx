@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import { useRouter } from "expo-router";
 import { useAuth } from "@/lib/auth-context";
 import { CONFERENCE, COLORS, ALLOWED_EMAIL_DOMAIN } from "@/lib/constants";
 import { GrahamLogo } from "@/components/GrahamLogo";
@@ -17,11 +18,19 @@ import { Mail, KeyRound } from "lucide-react-native";
 type Step = "email" | "code";
 
 export default function LoginScreen() {
-  const { signInWithEmail, verifyCode } = useAuth();
+  const { signInWithEmail, verifyCode, session } = useAuth();
+  const router = useRouter();
   const [step, setStep] = useState<Step>("email");
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // If a session appears (e.g., after verifyCode succeeds), leave the login screen.
+  useEffect(() => {
+    if (session) {
+      router.replace("/");
+    }
+  }, [session, router]);
 
   const handleSendCode = async () => {
     const trimmedEmail = email.trim().toLowerCase();
@@ -51,10 +60,16 @@ export default function LoginScreen() {
     const { error } = await verifyCode(email, trimmedCode);
     setLoading(false);
     if (error) {
-      Alert.alert("Incorrect Code", "The code you entered is invalid or has expired. Request a new one.");
+      if (typeof window !== "undefined" && window.alert) {
+        window.alert("Incorrect Code: " + error.message);
+      } else {
+        Alert.alert("Incorrect Code", "The code you entered is invalid or has expired. Request a new one.");
+      }
+      return;
     }
-    // On success, the auth-context onAuthStateChange fires SIGNED_IN and the
-    // router at app/index.tsx redirects to /(tabs)/home automatically.
+    // Success: the useEffect above will detect the new session and navigate to "/".
+    // Also push the navigation directly in case session state is set synchronously.
+    router.replace("/");
   };
 
   const handleResend = async () => {
