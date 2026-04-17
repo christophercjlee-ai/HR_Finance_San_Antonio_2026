@@ -17,6 +17,18 @@ import { Mail, KeyRound } from "lucide-react-native";
 
 type Step = "email" | "code";
 
+// Hard navigation helper. On web, window.location.assign is guaranteed to work
+// regardless of any SPA router state; it fully reloads the app at "/", which
+// lets app/index.tsx re-evaluate the session from storage and redirect to
+// /(tabs)/home. On native we fall back to router.replace.
+function navigateHome(router: ReturnType<typeof useRouter>) {
+  if (Platform.OS === "web" && typeof window !== "undefined") {
+    window.location.assign("/");
+    return;
+  }
+  router.replace("/");
+}
+
 export default function LoginScreen() {
   const { signInWithEmail, verifyCode, session } = useAuth();
   const router = useRouter();
@@ -25,24 +37,33 @@ export default function LoginScreen() {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // If a session appears (e.g., after verifyCode succeeds), leave the login screen.
+  // If a session appears (e.g., listener fires SIGNED_IN), bounce out of the
+  // login screen immediately.
   useEffect(() => {
     if (session) {
-      router.replace("/");
+      navigateHome(router);
     }
   }, [session, router]);
 
   const handleSendCode = async () => {
     const trimmedEmail = email.trim().toLowerCase();
     if (!trimmedEmail.endsWith(`@${ALLOWED_EMAIL_DOMAIN}`)) {
-      Alert.alert("Invalid Email", `Please use your @${ALLOWED_EMAIL_DOMAIN} email address to sign in.`);
+      if (Platform.OS === "web" && typeof window !== "undefined") {
+        window.alert(`Please use your @${ALLOWED_EMAIL_DOMAIN} email address to sign in.`);
+      } else {
+        Alert.alert("Invalid Email", `Please use your @${ALLOWED_EMAIL_DOMAIN} email address to sign in.`);
+      }
       return;
     }
     setLoading(true);
     const { error } = await signInWithEmail(trimmedEmail);
     setLoading(false);
     if (error) {
-      Alert.alert("Error", error.message);
+      if (Platform.OS === "web" && typeof window !== "undefined") {
+        window.alert("Error: " + error.message);
+      } else {
+        Alert.alert("Error", error.message);
+      }
     } else {
       setEmail(trimmedEmail);
       setCode("");
@@ -53,23 +74,28 @@ export default function LoginScreen() {
   const handleVerify = async () => {
     const trimmedCode = code.trim();
     if (trimmedCode.length !== 6 || !/^\d{6}$/.test(trimmedCode)) {
-      Alert.alert("Invalid Code", "Please enter the 6-digit code from your email.");
+      if (Platform.OS === "web" && typeof window !== "undefined") {
+        window.alert("Please enter the 6-digit code from your email.");
+      } else {
+        Alert.alert("Invalid Code", "Please enter the 6-digit code from your email.");
+      }
       return;
     }
     setLoading(true);
     const { error } = await verifyCode(email, trimmedCode);
-    setLoading(false);
     if (error) {
-      if (typeof window !== "undefined" && window.alert) {
-        window.alert("Incorrect Code: " + error.message);
+      setLoading(false);
+      if (Platform.OS === "web" && typeof window !== "undefined") {
+        window.alert("Incorrect or expired code. Please request a new one.");
       } else {
         Alert.alert("Incorrect Code", "The code you entered is invalid or has expired. Request a new one.");
       }
       return;
     }
-    // Success: the useEffect above will detect the new session and navigate to "/".
-    // Also push the navigation directly in case session state is set synchronously.
-    router.replace("/");
+    // Success. Do NOT clear loading — let the navigation tear the screen down.
+    // Navigate immediately to "/" via a hard navigation on web, which forces
+    // app/index.tsx to re-bootstrap with the fresh session from storage.
+    navigateHome(router);
   };
 
   const handleResend = async () => {
@@ -77,9 +103,17 @@ export default function LoginScreen() {
     const { error } = await signInWithEmail(email);
     setLoading(false);
     if (error) {
-      Alert.alert("Error", error.message);
+      if (Platform.OS === "web" && typeof window !== "undefined") {
+        window.alert("Error: " + error.message);
+      } else {
+        Alert.alert("Error", error.message);
+      }
     } else {
-      Alert.alert("Sent", "A new code has been sent to your email.");
+      if (Platform.OS === "web" && typeof window !== "undefined") {
+        window.alert("A new code has been sent to your email.");
+      } else {
+        Alert.alert("Sent", "A new code has been sent to your email.");
+      }
     }
   };
 
