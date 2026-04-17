@@ -35,7 +35,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       .select("*")
       .eq("id", userId)
       .single();
-
     if (!error && data) {
       setUser(data as User);
     }
@@ -47,35 +46,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-useEffect(() => {
-      const initAuth = async () => {
-              if (Platform.OS === "web" && typeof window !== "undefined" && window.location.search.includes("code=")) {
-                        try {
-                                    await supabase.auth.exchangeCodeForSession(window.location.href);
-                                    window.history.replaceState({}, document.title, window.location.pathname);
-                        } catch (err) {
-                                    console.error("Magic link exchange failed:", err);
-                        }
-              }
-              const { data: { session: s } } = await supabase.auth.getSession();
-              setSession(s);
-              if (s?.user?.id) {
-                        await fetchUser(s.user.id);
-              }
-              setLoading(false);
-      };
-      initAuth();
+  useEffect(() => {
+    const initAuth = async () => {
+      if (Platform.OS === "web" && typeof window !== "undefined" && window.location.search.includes("code=")) {
+        try {
+          await supabase.auth.exchangeCodeForSession(window.location.href);
+          window.history.replaceState({}, document.title, window.location.pathname);
+        } catch (err) {
+          console.error("Magic link exchange failed:", err);
+        }
+      }
+      const { data: { session: s } } = await supabase.auth.getSession();
+      setSession(s);
+      if (s?.user?.id) {
+        await fetchUser(s.user.id);
+      }
+      setLoading(false);
+    };
+    initAuth();
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, s) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, s) => {
       setSession(s);
       if (s?.user?.id) {
         fetchUser(s.user.id);
       } else {
         setUser(null);
       }
-// setLoading(false) removed - initAuth handles initial loading state to avoid race with code exchange    });
+    });
 
     return () => subscription.unsubscribe();
   }, []);
@@ -85,7 +82,7 @@ useEffect(() => {
       email,
       options: {
         shouldCreateUser: true,
-emailRedirectTo: Platform.OS === "web" ? "https://hr-finance-san-antonio-2026.vercel.app" : "graham-conference://auth/callback",
+        emailRedirectTo: Platform.OS === "web" ? "https://hr-finance-san-antonio-2026.vercel.app" : "graham-conference://auth/callback",
       },
     });
     return { error: error as Error | null };
@@ -94,6 +91,7 @@ emailRedirectTo: Platform.OS === "web" ? "https://hr-finance-san-antonio-2026.ve
   const signOut = async () => {
     await supabase.auth.signOut();
     setUser(null);
+    setSession(null);
   };
 
   return (
